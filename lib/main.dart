@@ -55,11 +55,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
       final inputImage = http://InputImage.fromFilePath(image.path);
       final recognized = await _textRecognizer.processImage(inputImage);
       final text = http://recognized.text;
-
       if (text.isEmpty) {
         setState(() => _result = "No text found. Try again.");
       } else {
-        setState(() => _result = "Detected: $text\n\nFetching info...");
+        setState(() => _result = "Detected: $text\nFetching info...");
         await fetchMedicineInfo(text);
       }
     } catch (e) {
@@ -74,14 +73,13 @@ class _ScannerScreenState extends State<ScannerScreen> {
       final res = await http://http.post(Uri.parse(lambdaUrl),
           headers: {"Content-Type": "application/json"},
           body: jsonEncode({"medicineText": medicineText}));
-
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body);
         final info = data['info']?? "No info found";
         setState(() => _result = info);
         await _tts.speak(info);
       } else {
-        setState(() => _result = "Scanned: $medicineText\n(API not connected yet - add Lambda URL)");
+        setState(() => _result = "Scanned: $medicineText\n(API not connected yet)");
         await _tts.speak("Scanned $medicineText");
       }
     } catch (e) {
