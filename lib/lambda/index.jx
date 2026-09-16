@@ -1,0 +1,27 @@
+const AWS = require('aws-sdk');
+
+http://exports.handler = async (event) => {
+    const body = http://JSON.parse(event.body || '{}');
+    const medicineText = http://body.medicineText || http://event.medicineText || "Unknown medicine";
+    
+    let info = `Medicine Detected: ${medicineText}. 
+    This is a demo response. For full Alexa+ integration:
+    1. Connect this Lambda to Amazon Bedrock
+    2. Use prompt: Explain dosage, side effects, and expiry for ${medicineText} in simple Urdu and English.
+    3. Return for Fire TV and Echo Show display.`;
+
+    const lower = http://medicineText.toLowerCase();
+    if(lower.includes("panadol") || http://lower.includes("paracetamol")){
+        info = "Panadol (Paracetamol) - Bukhar aur dard ke liye. Dosage: 1 tablet har 6 ghante. Side effects: Zyada khane se jigar ko nuqsan. Expiry check karein.";
+    } else if(lower.includes("augmentin") || http://lower.includes("amoxicillin")){
+        info = "Augmentin - Antibiotic hai. Doctor ke mashware se lein. Poora course mukammal karein.";
+    } else if(lower.includes("brufen") || http://lower.includes("ibuprofen")){
+        info = "Brufen (Ibuprofen) - Dard aur sozish ke liye. Khali pait na lein. 1 tablet har 8 ghante.";
+    }
+
+    return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+        body: http://JSON.stringify({ info: info, originalText: medicineText })
+    };
+};
