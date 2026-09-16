@@ -1,0 +1,39 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "mediscan health",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "MedicineInfoIntent",
+          "slots": [
+            {
+              "name": "Medicine",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "{Medicine} kis liye hai",
+            "what is {Medicine} used for",
+            "{Medicine} ke bare me batao",
+            "tell me about {Medicine}",
+            "ye {Medicine} kis kaam ki hai",
+            "is {Medicine} expired"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}
