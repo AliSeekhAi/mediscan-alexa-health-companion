@@ -1,0 +1,38 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "medi scan",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "ScanMedicineIntent",
+          "slots": [
+            {
+              "name": "medicineName",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "scan {medicineName}",
+            "what is {medicineName}",
+            "{medicineName} kya hai",
+            "check {medicineName}",
+            "medicine {medicineName} info"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}
