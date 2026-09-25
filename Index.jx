@@ -1,0 +1,20 @@
+
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+  res.json({ 
+    project: "MediScan - Alexa Health Companion",
+    status: "Running",
+    features: ["Report Scanning", "Alexa Voice", "Health Dashboard"]
+  });
+});
+
+app.get('/api/health', (req, res) => {
+  res.json({ health: "All systems operational" });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
