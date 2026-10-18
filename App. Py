@@ -34,4 +34,4 @@ def send_sms_alert(msg):
 
 # Test Run
 result = detect_locust("thar_field_day12.jpg")
-print(results)
+print(result)
